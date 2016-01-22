@@ -1,0 +1,75 @@
+<html>
+	<head>
+	<title>Affichage d'un joueur</title>
+	</head>
+	<body>
+		<article>
+			<h1>Liste des joueurs en 2014</h1>
+			<form  action="liste_joueur.php" method="post" enctype="application/x-www-form-urlencoded">
+			<table id="tableForm">
+				<tr>
+				<td><label>Rang :</label></td>
+				<td><select name="ordre">
+					<option value="asc" <?php verifSelectvp("asc","ordre") ?> >Croisant</option>
+					<option value="desc" <?php verifSelectvp("desc","ordre") ?> >Décroisant</option>
+				</select></td>
+				<td width="20"></td>	
+				<td><label>Première lettre du nom : </label></td>
+				<td><select name="nom">
+					<option value='tout' <?php verifSelectvp('tout','nom') ?>>Toutes les lettres</option>
+					<option value='A' <?php verifSelectvp('A','nom') ?> >A</option>
+					<option value='B' <?php verifSelectvp('B','nom') ?>>B</option>
+					<option value='C' <?php verifSelectvp('C','nom') ?>>C</option>
+					<option value='D' <?php verifSelectvp('D','nom') ?>>D</option>
+					<option value='E' <?php verifSelectvp('E','nom') ?>>E</option>
+					<option value='F' <?php verifSelectvp('F','nom') ?>>F</option>
+					<option value='G' <?php verifSelectvp('G','nom') ?>>G</option>
+					<option value='H' <?php verifSelectvp('H','nom') ?>>H</option>
+					<option value='I' <?php verifSelectvp('I','nom') ?>>I</option>
+					<option value='J' <?php verifSelectvp('J','nom') ?>>J</option>
+					<option value='K' <?php verifSelectvp('K','nom') ?>>K</option>
+					<option value='L' <?php verifSelectvp('L','nom') ?>>L</option>
+					<option value='M' <?php verifSelectvp('M','nom') ?>>M</option>
+					<option value='N' <?php verifSelectvp('N','nom') ?>>N</option>
+					<option value='O' <?php verifSelectvp('O','nom') ?>>O</option>
+					<option value='P' <?php verifSelectvp('P','nom') ?>>P</option>
+					<option value='Q' <?php verifSelectvp('Q','nom') ?>>Q</option>
+					<option value='R' <?php verifSelectvp('R','nom') ?>>R</option>
+					<option value='S' <?php verifSelectvp('S','nom') ?>>S</option>
+					<option value='T' <?php verifSelectvp('T','nom') ?>>T</option>
+					<option value='U' <?php verifSelectvp('U','nom') ?>>U</option>
+					<option value='V' <?php verifSelectvp('V','nom') ?>>V</option>
+					<option value='W' <?php verifSelectvp('W','nom') ?>>W</option>
+					<option value='X' <?php verifSelectvp('X','nom') ?>>X</option>
+					<option value='Y' <?php verifSelectvp('Y','nom') ?>>Y</option>
+					<option value='Z' <?php verifSelectvp('Z','nom') ?>>Z</option>
+				</select></td>
+				<td width="20"></td>
+				<td><label>Pays : </label></td>
+				<td><select name="pays">
+					<option value='tout' <?php verifSelectvp('tout','pays') ?>>Tous les pays</option>
+					<?php selectSQL($bdd,"pays","libelle","select libelle from pays order by libelle"); ?>
+				</select></td>
+				</tr>
+				<tr>
+				<td><label>Points > : </label></td>
+				<td><select name="Points">
+					<?php selectPoints(); ?>
+				</select></td>
+				<td width="20"></td>
+				<td><label>Différence : </label></td>
+				<td><select name="difference">
+					<option value='tout' <?php verifSelectvp('tout','difference') ?>>...</option>
+					<?php selectSQL($bdd,"difference","diff","select distinct diff from classement order by diff"); ?>
+				</select></td>
+				<td><label>Nombre de Matchs > : </label></td>
+				<td><select name="NombreMatchs">
+					<?php selectNbMatchs(); ?>
+				</select></td>
+				</tr>
+			</table>
+			<div id="bouton">
+				<input type="submit"/>
+				<input id="btQuit2" type="button" onClick="window.location.href='afficher_coureur.php';" value="Réinitialiser">
+			</div>
+			</form>
